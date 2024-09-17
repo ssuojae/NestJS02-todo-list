@@ -14,6 +14,6 @@ export class Task {
   @Column({ default: 'pending' })
   status: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  @Column()
+  dueDate: Date;
 }
