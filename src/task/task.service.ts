@@ -17,11 +17,11 @@ export class TaskService {
     task.title = title;
     task.description = description;
     task.dueDate = dueDate;
-    return this.taskRepository.save(task);
+    return await this.taskRepository.save(task);
   }
 
   async getTasks(): Promise<Task[]> {
-    return this.taskRepository.find();
+    return await this.taskRepository.find();
   }
 
   async updateTask(id: string, status: string): Promise<Task> {
@@ -30,7 +30,7 @@ export class TaskService {
       throw new Error('Task not found');
     }
     task.status = status;
-    return this.taskRepository.save(task);
+    return await this.taskRepository.save(task);
   }
 
   async deleteTask(id: string): Promise<void> {
