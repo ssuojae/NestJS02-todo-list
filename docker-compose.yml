@@ -1,4 +1,19 @@
 services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - POSTGRES_HOST=postgres  # PostgreSQL 컨테이너의 서비스 이름
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+    depends_on:
+      - postgres  # PostgreSQL 서비스가 준비된 후 애플리케이션 시작
+    networks:
+      - nest-network
+
   postgres:
     image: postgres:16
     restart: always
@@ -10,6 +25,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres
+    networks:
+      - nest-network
 
-volumes:
-  postgres-data:
+networks:
+  nest-network:
