@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -7,12 +8,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'user',
-      password: 'password',
-      database: 'mydb',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'], //.entity.ts 파일 자동 연동
-      synchronize: true, // 프로덕션 환경에서는 false 로 해야함 - 자동연동x
+      username: 'postgres',  // docker-compose의 POSTGRES_USER와 일치해야함!!
+      password: 'password',  // docker-compose의 POSTGRES_PASSWORD와 일치해야함!!
+      database: 'postgres',  // docker-compose의 POSTGRES_DB와 일치해야함!!
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
     }),
+    TaskModule,
   ],
 })
 export class AppModule {}
