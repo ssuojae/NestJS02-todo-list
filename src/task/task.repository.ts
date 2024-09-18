@@ -17,7 +17,7 @@ export class TaskRepository extends Repository<Task> {
   }
 
   async findAllTasks(): Promise<Task[]> {
-    return await this.find({ relations: ['user'] });
+    return await this.find();
   }
 
   async deleteTask(id: string): Promise<void> {

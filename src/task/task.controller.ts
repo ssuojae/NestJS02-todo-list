@@ -12,8 +12,12 @@ export class TaskController {
   }
 
   @Get()
-  getTasks() {
-    return this.taskService.getTasks();
+  async getTasks() {
+    const tasks = await this.taskService.getTasks();
+    tasks.forEach((task) => {
+      console.log(task.user.name);
+    });
+    return tasks;
   }
 
   @Patch(':id')
