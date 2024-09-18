@@ -9,7 +9,7 @@ export class TaskRepository extends Repository<Task> {
   }
 
   async findById(id: string): Promise<Task> {
-    return await this.findOne({ where: { id } });
+    return await this.findOne({ where: { id }, relations: ['user'] });
   }
 
   async saveTask(task: Task): Promise<Task> {
@@ -17,7 +17,7 @@ export class TaskRepository extends Repository<Task> {
   }
 
   async findAllTasks(): Promise<Task[]> {
-    return await this.find();
+    return await this.find({ relations: ['user'] });
   }
 
   async deleteTask(id: string): Promise<void> {
