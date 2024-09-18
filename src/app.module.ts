@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
+import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
+import { Task } from './task/task.entity';
 
 @Module({
   imports: [
@@ -12,10 +14,12 @@ import { User } from './user/user.entity';
       username: process.env.POSTGRES_USER || 'postgres',
       password: process.env.POSTGRES_PASSWORD || 'password',
       database: process.env.POSTGRES_DB || 'postgres',
-      entities: [__dirname + '/**/*.entity{.ts,.js}', User],
+      entities: [User, Task],
+      logging: ['query', 'error'],
       synchronize: true,
     }),
     TaskModule,
+    UserModule,
   ],
 })
 export class AppModule {}

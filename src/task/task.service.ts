@@ -8,11 +8,13 @@ export class TaskService {
   constructor(private readonly taskRepository: TaskRepository) {}
 
   async createTask(createTaskDto: CreateTaskDTO): Promise<Task> {
-    const { title, description, dueDate } = createTaskDto;
+    const { title, description, dueDate, userId } = createTaskDto;
+
     const task = new Task();
     task.title = title;
     task.description = description;
     task.dueDate = dueDate;
+    task.userId = userId;
     return await this.taskRepository.saveTask(task);
   }
 
