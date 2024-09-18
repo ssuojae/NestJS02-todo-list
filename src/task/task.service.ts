@@ -14,7 +14,8 @@ export class TaskService {
     task.title = title;
     task.description = description;
     task.dueDate = dueDate;
-    task.userId = userId;
+    task.user = { id: userId } as any;
+
     return await this.taskRepository.saveTask(task);
   }
 
