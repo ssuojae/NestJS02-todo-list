@@ -14,9 +14,6 @@ export class TaskController {
   @Get()
   async getTasks() {
     const tasks = await this.taskService.getTasks();
-    tasks.forEach((task) => {
-      console.log(task.user.name);
-    });
     return tasks;
   }
 
