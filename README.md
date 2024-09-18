@@ -2,7 +2,7 @@
 
 ### 구조 설계
 
-<img width="450" alt="image" src="https://github.com/user-attachments/assets/1a2f99d9-3a32-42fb-be8c-14f432c60887">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/e79c560a-77ec-4840-9109-833b6a00c441">
 
 
 <br/>
