@@ -1,4 +1,4 @@
-# NestJS 연습02. 도커를 이용한 Todo List
+## 프로젝트: Todo List with docker
 
 <br/>
 
@@ -81,6 +81,8 @@ export class TaskController {
   ) {}
 }
 ```
+
+<br/>
 
 ### 두가지 의존성 주입 방법 비교 
 
