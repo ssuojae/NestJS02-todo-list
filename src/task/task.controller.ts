@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Param, Delete, Patch } from '@nestjs/common';
-import { TaskService } from './task.service';
 import { CreateTaskDTO } from './dto/create-task.dto';
+import { ITaskService } from './interfaces/task-service.interface';
 
 @Controller('tasks')
 export class TaskController {
-  constructor(private readonly taskService: TaskService) {}
+  constructor(private readonly taskService: ITaskService) {}
 
   @Post()
   createTask(@Body() createTaskDto: CreateTaskDTO) {
@@ -13,8 +13,7 @@ export class TaskController {
 
   @Get()
   async getTasks() {
-    const tasks = await this.taskService.getTasks();
-    return tasks;
+    return await this.taskService.getTasks();
   }
 
   @Patch(':id')
